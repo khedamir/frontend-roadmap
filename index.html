@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Roadmap — Трекер прогресса</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero__brand">
+      <p class="hero__eyebrow">Твой путь</p>
+      <h1 class="hero__title">Frontend Roadmap</h1>
+      <p class="hero__subtitle" id="motivation">Каждый отмеченный пункт — шаг ближе к цели.</p>
+    </div>
+
+    <div class="hero__stats" id="overallStats">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ring__track" cx="60" cy="60" r="52" />
+          <circle class="ring__progress" id="ringProgress" cx="60" cy="60" r="52" />
+        </svg>
+        <div class="ring__label">
+          <span class="ring__pct" id="overallPct">0%</span>
+          <span class="ring__hint">готово</span>
+        </div>
+      </div>
+
+      <div class="stat-cards">
+        <div class="stat">
+          <span class="stat__value" id="doneCount">0</span>
+          <span class="stat__label">пройдено</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value" id="leftCount">0</span>
+          <span class="stat__label">осталось</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value" id="totalCount">0</span>
+          <span class="stat__label">всего</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__bar">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="overallBar">
+        <div class="progress-bar__fill" id="overallFill"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="group-nav" id="groupNav" aria-label="Группы тем"></nav>
+
+  <main class="main" id="app">
+    <p class="loading">Загружаем roadmap…</p>
+  </main>
+
+  <footer class="footer">
+    <p>Прогресс сохраняется в браузере автоматически</p>
+  </footer>
+
+  <dialog class="note-dialog" id="noteDialog">
+    <form method="dialog" class="note-dialog__form" id="noteForm">
+      <h2 class="note-dialog__title" id="noteDialogTitle">Примечание</h2>
+      <p class="note-dialog__item" id="noteDialogItem"></p>
+      <textarea
+        id="noteInput"
+        class="note-dialog__input"
+        rows="5"
+        placeholder="Мысли, ссылки, что повторить…"
+        maxlength="2000"
+      ></textarea>
+      <div class="note-dialog__actions">
+        <button type="submit" value="cancel" class="btn btn--ghost">Отмена</button>
+        <button type="button" class="btn btn--danger" id="clearNoteBtn" hidden>Удалить</button>
+        <button type="submit" value="save" class="btn btn--primary">Сохранить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
